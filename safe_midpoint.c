@@ -2,10 +2,7 @@
 #include <math.h>
 
 bool opposite_sign(double x, double y) {
-    
-    if( fabs(x) + x == 0 && fabs(y) + y == 0 ) return false;
-    if( fabs(x) + x == 2*x && fabs(y) + y == 2*y ) return false;
-    return true;
+    return (x < 0 && y > 0) || (x > 0 && y < 0);
 }
 
 double safe_midpoint(double a, double b) {

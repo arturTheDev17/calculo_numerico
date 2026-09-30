@@ -8,8 +8,6 @@ bool opposite_sign(double x, double y) {
 
 double safe_midpoint(double a, double b) {
     
-    // if (opposite_sign(a,b)) return a/2.0 + b/2.0;
-    
     return a + (b-a)/2.0;
 }
 
@@ -33,8 +31,7 @@ bool bisection(ContinuousFunction f, double a, double b,
     while ( fabs(b-a) > tol ){
         m = safe_midpoint( a , b );
         fm = CF_eval( f , m );   
-        fa = CF_eval( f , a );
-        
+
         if ( fm == 0 ) {
             *root = m; 
             return true;
@@ -44,8 +41,10 @@ bool bisection(ContinuousFunction f, double a, double b,
             b = m;
         } else {
             a = m;
-            *root = m;
+            fa = fm;
+
         }
+        *root = m;
     }
     
     return true;
